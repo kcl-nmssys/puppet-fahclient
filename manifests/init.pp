@@ -29,7 +29,7 @@ Xand Meaden, King's College London
 @param gpu_slots
   How many GPU slots to use
 
-@param package_source
+@param package_source_path
   URL or local file path to package file (.rpm or .deb)
   On RedHat-based distros this can be a URL, on Debian-based it must be a local file
   If set to undef, package will be installed for a pre-configured repo
@@ -45,7 +45,7 @@ class fahclient (
   Enum['big', 'normal', 'small'] $bigpackets = 'normal',
   Boolean $gpu                               = true,
   Integer $gpu_slots                         = 0,
-  Optional[String] $package_source           = $fahclient::params::package_source,
+  Optional[String] $package_source_path      = $fahclient::params::package_source,
 ) {
 
   if $ensure == 'present' {
