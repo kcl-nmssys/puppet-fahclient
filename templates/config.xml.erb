@@ -12,7 +12,7 @@
 <%-
 if @gpu
   i = 0
-  while i < @gpu_count do
+  while i < @gpu_slots do
     slot = i + 1
 %>
 <slot id='<%= slot %>' type='GPU'/>
