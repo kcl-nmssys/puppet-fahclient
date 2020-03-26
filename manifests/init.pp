@@ -88,7 +88,7 @@ class fahclient (
     exec {
       'Disable fahclient legacy service':
         user        => 'root',
-        command     => '/etc/init.d/FAHClient stop; /usr/bin/mv /etc/init.d/FAHClient /usr/local/sbin',
+        command     => '/etc/init.d/FAHClient stop; /bin/mv /etc/init.d/FAHClient /usr/local/sbin',
         provider    => 'shell',
         refreshonly => true;
     }
