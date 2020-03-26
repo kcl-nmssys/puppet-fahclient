@@ -44,8 +44,7 @@ class fahclient (
         group   => 'root',
         mode    => '0444',
         source  => 'puppet:///modules/fahclient/fahclient.service',
-        notify  => Exec['Setup fahclient systemd service'],
-        require => File['/usr/local/sbin/FAHClient'];
+        notify  => Exec['Setup fahclient systemd service'];
 
       '/etc/fahclient/config.xml':
         ensure  => 'present',
