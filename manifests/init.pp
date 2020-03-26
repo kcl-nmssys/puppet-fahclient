@@ -81,16 +81,7 @@ class fahclient (
       'fahclient':
         ensure   => 'present',
         provider => $package_provider,
-        source   => $package_source,
-        notify   => Exec['Disable fahclient legacy service'];
-    }
-
-    exec {
-      'Disable fahclient legacy service':
-        user        => 'root',
-        command     => '/etc/init.d/FAHClient stop; /bin/mv /etc/init.d/FAHClient /usr/local/sbin',
-        provider    => 'shell',
-        refreshonly => true;
+        source   => $package_source;
     }
 
     file {
@@ -124,6 +115,12 @@ class fahclient (
     }
 
     exec {
+      'Disable fahclient legacy service':
+        user     => 'root',
+        command  => '/etc/init.d/FAHClient stop; /bin/mv /etc/init.d/FAHClient /usr/local/sbin',
+        provider => 'shell',
+        creates  => '/usr/local/sbin/FAHClient';
+
       'Setup fahclient systemd service':
         user        => 'root',
         command     => '/bin/systemctl daemon-reload',
@@ -134,7 +131,7 @@ class fahclient (
       'fahclient':
         ensure  => 'running',
         enable  => true,
-        require => Exec['Setup fahclient systemd service'];
+        require => Exec['Disable fahclient legacy service', 'Setup fahclient systemd service'];
     }
   } else {
     package {
