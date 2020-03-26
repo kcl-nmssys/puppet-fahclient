@@ -1,0 +1,13 @@
+[Unit]
+Description=Folding@Home client
+
+[Service]
+Type=simple
+PIDFile=/var/run/fahclient.pid
+ExecStart=/usr/local/sbin/FAHClient -v start
+ExecReload=/usr/local/sbin/FAHClient -v restart
+ExecStop=/usr/local/sbin/FAHClient -v stop
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
