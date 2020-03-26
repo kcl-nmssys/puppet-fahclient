@@ -1,10 +1,12 @@
 {
   "name": "kclnmssys-fahclient",
   "version": "0.1.0",
-  "author": "Xand Meaden, KCL",
-  "summary": "",
+  "author": "King's College London",
+  "summary": "Puppet module for Folding@Home client",
   "license": "Apache-2.0",
-  "source": "",
+  "project_page": "https://github.com/kcl-nmssys/puppet-fahclient",
+  "source": "https://github.com/kcl-nmssys/puppet-fahclient",
+  "issues_url": "https://github.com/kcl-nmssys/puppet-fahclient/issues",
   "dependencies": [
 
   ],
@@ -31,6 +33,18 @@
       "operatingsystem": "Scientific",
       "operatingsystemrelease": [
         "7"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "18.04"
       ]
     }
   ],

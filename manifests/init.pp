@@ -1,23 +1,79 @@
+/*
+Folding@Home client
+Xand Meaden, King's College London
+
+@param user
+  Folding@Home username
+
+@param passkey
+  Folding@home user's passkey
+
+@param team_id
+  Folding@home team ID number
+
+@param ensure
+  Ensure absent or present (default)
+
+@param cause
+  Which Folding@Home cause to support (ANY includes COVID-19)
+
+@param power
+  How much CPU/GPU resource to use
+
+@param bigpackets
+  How much memory resource to use
+
+@param gpu
+  Whether to use GPU
+
+@param gpu_slots
+  How many GPU slots to use
+
+@param package_source
+  URL or local file path to package file (.rpm or .deb)
+  On RedHat-based distros this can be a URL, on Debian-based it must be a local file
+  If set to undef, package will be installed for a pre-configured repo
+
+*/
 class fahclient (
   String $user,
   String $passkey,
   Integer $team_id,
   Enum['absent', 'present'] $ensure          = 'present',
-  Pattern[/^[A-Z]+$/] $cause                 = 'ANY', # ANY includes COVID-19
+  Pattern[/^[A-Z]+$/] $cause                 = 'ANY',
   Enum['light', 'medium', 'full'] $power     = 'medium',
-  Enum['big', 'normal', 'small'] $bigpackets = 'normal', # Memory usage
+  Enum['big', 'normal', 'small'] $bigpackets = 'normal',
   Boolean $gpu                               = true,
-  Integer $gpu_slots                         = 0, # How many GPUs you have available
-  Optional[String] $package_url              = $fahclient::params::package_url, # Set to undef to use your own preconfigured repo
+  Integer $gpu_slots                         = 0,
+  Optional[String] $package_source           = $fahclient::params::package_source,
 ) {
 
   if $ensure == 'present' {
-
-    if $package_url {
-      $package_provider = 'rpm'
-      $package_source = $package_url
+    if $package_source_path {
+      case $facts['os']['family'] {
+        'RedHat': {
+          $package_provider = 'rpm'
+        }
+        'Debian': {
+          $package_provider = 'dpkg'
+        }
+        default: {
+          fail('OS not supported')
+        }
+      }
+      $package_source = $package_source_path
     } else {
-      $package_provider = 'yum'
+      case $facts['os']['family'] {
+        'RedHat': {
+          $package_provider = 'yum'
+        }
+        'Debian': {
+          $package_provider = 'apt'
+        }
+        default: {
+          fail('OS not supported')
+        }
+      }
       $package_source = undef
     }
 
