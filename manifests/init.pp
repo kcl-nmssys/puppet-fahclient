@@ -1,5 +1,3 @@
-# fahclient
-#
 # Folding@Home client
 #
 # @param user

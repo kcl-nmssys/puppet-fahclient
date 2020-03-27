@@ -1,5 +1,3 @@
-# fahclient::params
-#
 # Distro-specific default settings
 #
 class fahclient::params {
