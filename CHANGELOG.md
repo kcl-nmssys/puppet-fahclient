@@ -9,3 +9,7 @@ Initial release.
 ## Release 0.1.1
 
 Documentation and code formatting, no functional changes.
+
+## Release 0.1.2
+
+Add REFERENCE.md file.
