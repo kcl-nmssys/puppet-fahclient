@@ -1,40 +1,40 @@
-/*
-Folding@Home client
-Xand Meaden, King's College London
-
-@param user
-  Folding@Home username
-
-@param passkey
-  Folding@home user's passkey
-
-@param team_id
-  Folding@home team ID number
-
-@param ensure
-  Ensure absent or present (default)
-
-@param cause
-  Which Folding@Home cause to support (ANY includes COVID-19)
-
-@param power
-  How much CPU/GPU resource to use
-
-@param bigpackets
-  How much memory resource to use
-
-@param gpu
-  Whether to use GPU
-
-@param gpu_slots
-  How many GPU slots to use
-
-@param package_source_path
-  URL or local file path to package file (.rpm or .deb)
-  On RedHat-based distros this can be a URL, on Debian-based it must be a local file
-  If set to undef, package will be installed for a pre-configured repo
-
-*/
+# fahclient
+#
+# Folding@Home client
+# Xand Meaden, King's College London
+#
+# @param user
+#   Folding@Home username
+#
+# @param passkey
+#   Folding@home user's passkey
+#
+# @param team_id
+#   Folding@home team ID number
+#
+# @param ensure
+#   Ensure absent or present (default)
+#
+# @param cause
+#   Which Folding@Home cause to support (ANY includes COVID-19)
+#
+# @param power
+#   How much CPU/GPU resource to use
+#
+# @param bigpackets
+#   How much memory resource to use
+#
+# @param gpu
+#   Whether to use GPU
+#
+# @param gpu_slots
+#   How many GPU slots to use
+#
+# @param package_source_path
+#   URL or local file path to package file (.rpm or .deb)
+#   On RedHat-based distros this can be a URL, on Debian-based it must be a local file
+#   If set to undef, package will be installed for a pre-configured repo
+#
 class fahclient (
   String $user,
   String $passkey,
@@ -86,12 +86,12 @@ class fahclient (
 
     file {
       '/lib/systemd/system/fahclient.service':
-        ensure  => 'present',
-        owner   => 'root',
-        group   => 'root',
-        mode    => '0444',
-        source  => 'puppet:///modules/fahclient/fahclient.service',
-        notify  => Exec['Setup fahclient systemd service'];
+        ensure => 'present',
+        owner  => 'root',
+        group  => 'root',
+        mode   => '0444',
+        source => 'puppet:///modules/fahclient/fahclient.service',
+        notify => Exec['Setup fahclient systemd service'];
 
       '/etc/fahclient/config.xml':
         ensure  => 'present',

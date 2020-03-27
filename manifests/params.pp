@@ -1,3 +1,5 @@
+# fahclient::params
+#
 class fahclient::params {
   case $facts['os']['family'] {
     'RedHat': {
