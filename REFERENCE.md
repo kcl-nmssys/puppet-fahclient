@@ -5,8 +5,8 @@
 
 **Classes**
 
-* [`fahclient`](#fahclient): fahclient  Folding@Home client Xand Meaden, King's College London
-* [`fahclient::params`](#fahclientparams): fahclient::params
+* [`fahclient`](#fahclient): fahclient  Folding@Home client
+* [`fahclient::params`](#fahclientparams): fahclient::params  Distro-specific default settings
 
 ## Classes
 
@@ -15,7 +15,6 @@
 fahclient
 
 Folding@Home client
-Xand Meaden, King's College London
 
 #### Parameters
 
@@ -100,4 +99,6 @@ Default value: $fahclient::params::package_source
 ### fahclient::params
 
 fahclient::params
+
+Distro-specific default settings
 

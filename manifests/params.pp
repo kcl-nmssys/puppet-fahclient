@@ -1,5 +1,7 @@
 # fahclient::params
 #
+# Distro-specific default settings
+#
 class fahclient::params {
   case $facts['os']['family'] {
     'RedHat': {

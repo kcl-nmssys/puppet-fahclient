@@ -13,3 +13,7 @@ Documentation and code formatting, no functional changes.
 ## Release 0.1.2
 
 Add REFERENCE.md file.
+
+## Release 0.1.3
+
+Minor documentation update.

@@ -1,7 +1,6 @@
 # fahclient
 #
 # Folding@Home client
-# Xand Meaden, King's College London
 #
 # @param user
 #   Folding@Home username
