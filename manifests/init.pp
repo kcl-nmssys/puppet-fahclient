@@ -18,9 +18,6 @@
 # @param power
 #   How much CPU/GPU resource to use
 #
-# @param bigpackets
-#   How much memory resource to use
-#
 # @param gpu
 #   Whether to use GPU
 #
@@ -45,7 +42,6 @@ class fahclient (
   Enum['absent', 'present'] $ensure          = 'present',
   Pattern[/^[A-Z]+$/] $cause                 = 'ANY',
   Enum['light', 'medium', 'full'] $power     = 'medium',
-  Enum['big', 'normal', 'small'] $bigpackets = 'normal',
   Boolean $gpu                               = true,
   Integer $gpu_slots                         = 0,
   Integer $cpu_slots                         = 1,

@@ -189,24 +189,6 @@
   
     <li>
       
-        <span class='name'>bigpackets</span>
-      
-      
-        <span class='type'>(<tt>Enum['big', 'normal', 'small']</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>&#39;normal&#39;</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>How much memory resource to use</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
         <span class='name'>gpu</span>
       
       
@@ -308,6 +290,9 @@ to undef, package will be installed for a pre-configured repo</p>
         <pre class="lines">
 
 
+38
+39
+40
 41
 42
 43
@@ -415,14 +400,10 @@ to undef, package will be installed for a pre-configured repo</p>
 145
 146
 147
-148
-149
-150
-151
-152</pre>
+148</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 41</span>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 38</span>
 
 class fahclient (
   String $user,
@@ -431,7 +412,6 @@ class fahclient (
   Enum[&#39;absent&#39;, &#39;present&#39;] $ensure          = &#39;present&#39;,
   Pattern[/^[A-Z]+$/] $cause                 = &#39;ANY&#39;,
   Enum[&#39;light&#39;, &#39;medium&#39;, &#39;full&#39;] $power     = &#39;medium&#39;,
-  Enum[&#39;big&#39;, &#39;normal&#39;, &#39;small&#39;] $bigpackets = &#39;normal&#39;,
   Boolean $gpu                               = true,
   Integer $gpu_slots                         = 0,
   Integer $cpu_slots                         = 1,

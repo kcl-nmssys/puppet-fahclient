@@ -60,14 +60,6 @@ How much CPU/GPU resource to use
 
 Default value: 'medium'
 
-##### `bigpackets`
-
-Data type: `Enum['big', 'normal', 'small']`
-
-How much memory resource to use
-
-Default value: 'normal'
-
 ##### `gpu`
 
 Data type: `Boolean`
