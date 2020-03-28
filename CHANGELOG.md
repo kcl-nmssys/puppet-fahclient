@@ -17,3 +17,8 @@ Add REFERENCE.md file.
 ## Release 0.1.3
 
 Minor documentation update.
+
+## Release 0.2.0
+
+* Support multiple CPU slots to handle large CPU counts (https://foldingforum.org/viewtopic.php?f=106&t=33511&p=319452)
+* Remove old/invalid configuration option
