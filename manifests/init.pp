@@ -27,6 +27,12 @@
 # @param gpu_slots
 #   How many GPU slots to use
 #
+# @param cpu_slots
+#   How many CPU slots to use
+#
+# @param cpus_per_slot
+#   How many CPUs per CPU slot
+#
 # @param package_source_path
 #   URL or local file path to package file (.rpm or .deb)
 #   On RedHat-based distros this can be a URL, on Debian-based it must be a local file
@@ -42,6 +48,8 @@ class fahclient (
   Enum['big', 'normal', 'small'] $bigpackets = 'normal',
   Boolean $gpu                               = true,
   Integer $gpu_slots                         = 0,
+  Integer $cpu_slots                         = 1,
+  Integer $cpus_per_slot                     = $facts['processorcountcount'],
   Optional[String] $package_source_path      = $fahclient::params::package_source,
 ) {
 

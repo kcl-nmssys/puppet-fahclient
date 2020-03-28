@@ -10,8 +10,17 @@
 <gpu v='<%= scope.call_function('bool2str', [@gpu]) %>'/>
 <slot id='0' type='CPU'/>
 <%-
+i = 0
+while i < @cpu_slots do
+%>
+  <slot id='<%= slot %>' type='CPU'>
+    <cpus v='<%= @cpus_per_slot %>'/>
+  </slot>
+<%-
+  i += 1
+end
 if @gpu
-  i = 0
+  i = @cpu_slots
   while i < @gpu_slots do
     slot = i + 1
 %>

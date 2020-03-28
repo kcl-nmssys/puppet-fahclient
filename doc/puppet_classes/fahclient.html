@@ -75,8 +75,6 @@
 <div class="docstring">
   <div class="discussion">
     
-<p>fahclient</p>
-
 <p>Folding@Home client</p>
 
   </div>
@@ -245,6 +243,42 @@
   
     <li>
       
+        <span class='name'>cpu_slots</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>1</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>How many CPU slots to use</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>cpus_per_slot</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$facts[&#39;processorcountcount&#39;]</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>How many CPUs per CPU slot</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>package_source_path</span>
       
       
@@ -274,10 +308,6 @@ to undef, package will be installed for a pre-configured repo</p>
         <pre class="lines">
 
 
-37
-38
-39
-40
 41
 42
 43
@@ -383,10 +413,16 @@ to undef, package will be installed for a pre-configured repo</p>
 143
 144
 145
-146</pre>
+146
+147
+148
+149
+150
+151
+152</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 37</span>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 41</span>
 
 class fahclient (
   String $user,
@@ -398,6 +434,8 @@ class fahclient (
   Enum[&#39;big&#39;, &#39;normal&#39;, &#39;small&#39;] $bigpackets = &#39;normal&#39;,
   Boolean $gpu                               = true,
   Integer $gpu_slots                         = 0,
+  Integer $cpu_slots                         = 1,
+  Integer $cpus_per_slot                     = $facts[&#39;processorcountcount&#39;],
   Optional[String] $package_source_path      = $fahclient::params::package_source,
 ) {
 

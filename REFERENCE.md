@@ -5,14 +5,12 @@
 
 **Classes**
 
-* [`fahclient`](#fahclient): fahclient  Folding@Home client
-* [`fahclient::params`](#fahclientparams): fahclient::params  Distro-specific default settings
+* [`fahclient`](#fahclient): Folding@Home client
+* [`fahclient::params`](#fahclientparams): Distro-specific default settings
 
 ## Classes
 
 ### fahclient
-
-fahclient
 
 Folding@Home client
 
@@ -86,6 +84,22 @@ How many GPU slots to use
 
 Default value: 0
 
+##### `cpu_slots`
+
+Data type: `Integer`
+
+How many CPU slots to use
+
+Default value: 1
+
+##### `cpus_per_slot`
+
+Data type: `Integer`
+
+How many CPUs per CPU slot
+
+Default value: $facts['processorcountcount']
+
 ##### `package_source_path`
 
 Data type: `Optional[String]`
@@ -97,8 +111,6 @@ If set to undef, package will be installed for a pre-configured repo
 Default value: $fahclient::params::package_source
 
 ### fahclient::params
-
-fahclient::params
 
 Distro-specific default settings
 
