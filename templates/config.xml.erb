@@ -18,7 +18,7 @@ while i < @cpu_slots do
   i += 1
 end
 if @gpu
-  while i < @gpu_slots do
+  while i < @gpu_slots + @cpu_slots do
 %>
 <slot id='<%= i %>' type='GPU'/>
 <%

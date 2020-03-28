@@ -249,7 +249,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$facts[&#39;processorcountcount&#39;]</tt>)</em>
+        <em class="default">(defaults to: <tt>/</tt>)</em>
       
       
         &mdash;
@@ -409,14 +409,14 @@ class fahclient (
   String $user,
   String $passkey,
   Integer $team_id,
-  Enum[&#39;absent&#39;, &#39;present&#39;] $ensure          = &#39;present&#39;,
-  Pattern[/^[A-Z]+$/] $cause                 = &#39;ANY&#39;,
-  Enum[&#39;light&#39;, &#39;medium&#39;, &#39;full&#39;] $power     = &#39;medium&#39;,
-  Boolean $gpu                               = true,
-  Integer $gpu_slots                         = 0,
-  Integer $cpu_slots                         = 1,
-  Integer $cpus_per_slot                     = $facts[&#39;processorcountcount&#39;],
-  Optional[String] $package_source_path      = $fahclient::params::package_source,
+  Enum[&#39;absent&#39;, &#39;present&#39;] $ensure      = &#39;present&#39;,
+  Pattern[/^[A-Z]+$/] $cause             = &#39;ANY&#39;,
+  Enum[&#39;light&#39;, &#39;medium&#39;, &#39;full&#39;] $power = &#39;medium&#39;,
+  Boolean $gpu                           = true,
+  Integer $gpu_slots                     = 0,
+  Integer $cpu_slots                     = 1,
+  Integer $cpus_per_slot                 = $facts[&#39;processorcount&#39;] / $cpu_slots,
+  Optional[String] $package_source_path  = $fahclient::params::package_source,
 ) {
 
   if $ensure == &#39;present&#39; {

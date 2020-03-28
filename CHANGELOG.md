@@ -22,3 +22,7 @@ Minor documentation update.
 
 * Support multiple CPU slots to handle large CPU counts (https://foldingforum.org/viewtopic.php?f=106&t=33511&p=319452)
 * Remove old/invalid configuration option
+
+## Release 0.2.1
+
+* Fix bug

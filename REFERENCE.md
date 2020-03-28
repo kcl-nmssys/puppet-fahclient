@@ -90,7 +90,7 @@ Data type: `Integer`
 
 How many CPUs per CPU slot
 
-Default value: $facts['processorcountcount']
+Default value: /
 
 ##### `package_source_path`
 
