@@ -13,18 +13,16 @@
 i = 0
 while i < @cpu_slots do
 %>
-  <slot id='<%= slot %>' type='CPU'>
+  <slot id='<%= i %>' type='CPU'>
     <cpus v='<%= @cpus_per_slot %>'/>
   </slot>
 <%-
   i += 1
 end
 if @gpu
-  i = @cpu_slots
   while i < @gpu_slots do
-    slot = i + 1
 %>
-<slot id='<%= slot %>' type='GPU'/>
+<slot id='<%= i %>' type='GPU'/>
 <%
     i += 1
   end
