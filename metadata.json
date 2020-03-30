@@ -1,6 +1,6 @@
 {
   "name": "kclnmssys-fahclient",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "King's College London",
   "summary": "Puppet module for Folding@Home client",
   "license": "Apache-2.0",
@@ -56,5 +56,6 @@
   ],
   "pdk-version": "1.17.0",
   "template-url": "pdk-default#1.17.0",
-  "template-ref": "tags/1.17.0-0-gd3a4319"
+  "template-ref": "tags/1.17.0-0-gd3a4319",
+  "tags": ["fahclient", "Folding@Home", "folding at home", "folding"]
 }
