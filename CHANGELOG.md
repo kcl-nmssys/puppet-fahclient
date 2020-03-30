@@ -26,3 +26,7 @@ Minor documentation update.
 ## Release 0.2.1
 
 * Fix bug
+
+## Release 0.2.2
+
+* Updated metadata.json tags
