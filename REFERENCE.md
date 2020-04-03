@@ -118,6 +118,22 @@ Optional fixed gid for fahclient user
 
 Default value: `undef`
 
+##### `service_ensure`
+
+Data type: `Enum['running', 'stopped']`
+
+Whether service should be running or stopped
+
+Default value: 'running'
+
+##### `service_enable`
+
+Data type: `Boolean`
+
+Whether to enable service
+
+Default value: `true`
+
 ### fahclient::params
 
 Distro-specific default settings

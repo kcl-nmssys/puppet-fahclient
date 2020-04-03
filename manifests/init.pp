@@ -41,20 +41,28 @@
 # @param gid
 #   Optional fixed gid for fahclient user
 #
+# @param service_ensure
+#   Whether service should be running or stopped
+#
+# @param service_enable
+#   Whether to enable service
+#
 class fahclient (
   String $user,
   String $passkey,
   Integer $team_id,
-  Enum['absent', 'present'] $ensure      = 'present',
-  Pattern[/^[A-Z]+$/] $cause             = 'ANY',
-  Enum['light', 'medium', 'full'] $power = 'medium',
-  Boolean $gpu                           = true,
-  Integer $gpu_slots                     = 0,
-  Integer $cpu_slots                     = 1,
-  Integer $cpus_per_slot                 = $facts['processorcount'] / $cpu_slots,
-  Optional[String] $package_source_path  = $fahclient::params::package_source,
-  Optional[Integer] $uid                 = undef,
-  Optional[Integer] $gid                 = undef,
+  Enum['absent', 'present'] $ensure          = 'present',
+  Pattern[/^[A-Z]+$/] $cause                 = 'ANY',
+  Enum['light', 'medium', 'full'] $power     = 'medium',
+  Boolean $gpu                               = true,
+  Integer $gpu_slots                         = 0,
+  Integer $cpu_slots                         = 1,
+  Integer $cpus_per_slot                     = $facts['processorcount'] / $cpu_slots,
+  Optional[String] $package_source_path      = $fahclient::params::package_source,
+  Optional[Integer] $uid                     = undef,
+  Optional[Integer] $gid                     = undef,
+  Enum['running', 'stopped'] $service_ensure = 'running',
+  Boolean $service_enable                    = true,
 ) {
 
   if $ensure == 'present' {
@@ -157,8 +165,8 @@ class fahclient (
 
     service {
       'fahclient':
-        ensure  => 'running',
-        enable  => true,
+        ensure  => $service_ensure,
+        enable  => $service_enable,
         require => Exec['Disable fahclient legacy service', 'Setup fahclient systemd service'];
     }
   } else {
