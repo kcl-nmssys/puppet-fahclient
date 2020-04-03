@@ -35,6 +35,12 @@
 #   On RedHat-based distros this can be a URL, on Debian-based it must be a local file
 #   If set to undef, package will be installed for a pre-configured repo
 #
+# @param uid
+#   Optional fixed uid for fahclient user
+#
+# @param gid
+#   Optional fixed gid for fahclient user
+#
 class fahclient (
   String $user,
   String $passkey,
@@ -47,6 +53,8 @@ class fahclient (
   Integer $cpu_slots                     = 1,
   Integer $cpus_per_slot                 = $facts['processorcount'] / $cpu_slots,
   Optional[String] $package_source_path  = $fahclient::params::package_source,
+  Optional[Integer] $uid                 = undef,
+  Optional[Integer] $gid                 = undef,
 ) {
 
   if $ensure == 'present' {
@@ -76,6 +84,25 @@ class fahclient (
         }
       }
       $package_source = undef
+    }
+
+    if $uid and $gid {
+      group {
+        'fahclient':
+          ensure => 'present',
+          gid    => $gid;
+      }
+
+      user {
+        'fahclient':
+          ensure  => 'present',
+          uid     => $uid,
+          comment => 'Folding@home Client',
+          shell   => '/sbin/nologin',
+          home    => '/var/lib/fahclient',
+          require => Group['fahclient'],
+          before  => Package['fahclient'];
+      }
     }
 
     package {
@@ -142,6 +169,16 @@ class fahclient (
 
     file {
       ['/etc/fahclient/config.xml', '/etc/systemd/system/multi-user.target.wants/fahclient']:
+        ensure => 'absent';
+    }
+
+    user {
+      'fahclient':
+        ensure => 'absent';
+    }
+
+    group {
+      'fahclient':
         ensure => 'absent';
     }
   }

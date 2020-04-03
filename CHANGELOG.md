@@ -30,3 +30,7 @@ Minor documentation update.
 ## Release 0.2.2
 
 * Updated metadata.json tags
+
+## Release 0.2.3
+
+* Support specifying uid and gid for fahclient user

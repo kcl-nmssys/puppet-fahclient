@@ -102,6 +102,22 @@ If set to undef, package will be installed for a pre-configured repo
 
 Default value: $fahclient::params::package_source
 
+##### `uid`
+
+Data type: `Optional[Integer]`
+
+Optional fixed uid for fahclient user
+
+Default value: `undef`
+
+##### `gid`
+
+Data type: `Optional[Integer]`
+
+Optional fixed gid for fahclient user
+
+Default value: `undef`
+
 ### fahclient::params
 
 Distro-specific default settings
