@@ -41,6 +41,9 @@
 # @param gid
 #   Optional fixed gid for fahclient user
 #
+# @param manage_service
+#   Whether to manage service
+#
 # @param service_ensure
 #   Whether service should be running or stopped
 #
@@ -61,6 +64,7 @@ class fahclient (
   Optional[String] $package_source_path      = $fahclient::params::package_source,
   Optional[Integer] $uid                     = undef,
   Optional[Integer] $gid                     = undef,
+  Boolean $manage_service                    = true,
   Enum['running', 'stopped'] $service_ensure = 'running',
   Boolean $service_enable                    = true,
 ) {
@@ -163,11 +167,13 @@ class fahclient (
         refreshonly => true;
     }
 
-    service {
-      'fahclient':
-        ensure  => $service_ensure,
-        enable  => $service_enable,
-        require => Exec['Disable fahclient legacy service', 'Setup fahclient systemd service'];
+    if $manage_service {
+      service {
+        'fahclient':
+          ensure  => $service_ensure,
+          enable  => $service_enable,
+          require => Exec['Disable fahclient legacy service', 'Setup fahclient systemd service'];
+      }
     }
   } else {
     package {

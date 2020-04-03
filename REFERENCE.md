@@ -118,6 +118,14 @@ Optional fixed gid for fahclient user
 
 Default value: `undef`
 
+##### `manage_service`
+
+Data type: `Boolean`
+
+Whether to manage service
+
+Default value: `true`
+
 ##### `service_ensure`
 
 Data type: `Enum['running', 'stopped']`
