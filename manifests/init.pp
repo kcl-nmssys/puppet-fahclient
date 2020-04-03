@@ -139,7 +139,6 @@ class fahclient (
         group   => 'root',
         mode    => '0640',
         content => template('fahclient/config.xml.erb'),
-        notify  => Service['fahclient'],
         require => Package['fahclient'];
 
       ['/etc/fahclient', '/var/lib/fahclient']:
@@ -170,9 +169,10 @@ class fahclient (
     if $manage_service {
       service {
         'fahclient':
-          ensure  => $service_ensure,
-          enable  => $service_enable,
-          require => Exec['Disable fahclient legacy service', 'Setup fahclient systemd service'];
+          ensure    => $service_ensure,
+          enable    => $service_enable,
+          subscribe => File['/etc/fahclient/config.xml'],
+          require   => Exec['Disable fahclient legacy service', 'Setup fahclient systemd service'];
       }
     }
   } else {

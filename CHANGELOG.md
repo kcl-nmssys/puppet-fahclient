@@ -35,3 +35,7 @@ Minor documentation update.
 
 * Support specifying uid and gid for fahclient user
 * Allow service to be kept stopped/disabled
+
+## Release 0.2.4
+
+* Fix config.xml file definition when not managing service
