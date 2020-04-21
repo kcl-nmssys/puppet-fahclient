@@ -47,3 +47,7 @@ Minor documentation update.
 ## Release 0.2.6
 
 * Fix to allow underscore in cause parameter
+
+## Release 0.2.7
+
+* Fix to allow digits in cause parameter

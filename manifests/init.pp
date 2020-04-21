@@ -59,7 +59,7 @@ class fahclient (
   Integer $team_id,
   Enum['absent', 'present'] $ensure          = 'present',
   Optional[String] $version                  = undef,
-  Pattern[/^[A-Z_]+$/] $cause                = 'ANY',
+  Pattern[/^[A-Z0-9_]+$/] $cause             = 'ANY',
   Enum['light', 'medium', 'full'] $power     = 'medium',
   Boolean $gpu                               = true,
   Integer $gpu_slots                         = 0,
