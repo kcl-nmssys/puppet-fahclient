@@ -44,11 +44,19 @@ Ensure absent or present (default)
 
 Default value: 'present'
 
+##### `version`
+
+Data type: `Optional[String]`
+
+Which version to install (optional)
+
+Default value: `undef`
+
 ##### `cause`
 
 Data type: `Pattern[/^[A-Z]+$/]`
 
-Which Folding@Home cause to support (ANY includes COVID-19)
+Which Folding@Home cause to support (ANY, COVID_19, etc)
 
 Default value: 'ANY'
 

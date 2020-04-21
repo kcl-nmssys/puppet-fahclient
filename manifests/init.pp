@@ -12,8 +12,11 @@
 # @param ensure
 #   Ensure absent or present (default)
 #
+# @param version
+#   Which version to install (optional)
+#
 # @param cause
-#   Which Folding@Home cause to support (ANY includes COVID-19)
+#   Which Folding@Home cause to support (ANY, COVID_19, etc)
 #
 # @param power
 #   How much CPU/GPU resource to use
@@ -55,6 +58,7 @@ class fahclient (
   String $passkey,
   Integer $team_id,
   Enum['absent', 'present'] $ensure          = 'present',
+  Optional[String] $version                  = undef,
   Pattern[/^[A-Z]+$/] $cause                 = 'ANY',
   Enum['light', 'medium', 'full'] $power     = 'medium',
   Boolean $gpu                               = true,
@@ -70,6 +74,12 @@ class fahclient (
 ) {
 
   if $ensure == 'present' {
+    if $version {
+      $package_ensure = $version
+    } else {
+      $package_ensure = 'present'
+    }
+
     if $package_source_path {
       case $facts['os']['family'] {
         'RedHat': {
@@ -119,7 +129,7 @@ class fahclient (
 
     package {
       'fahclient':
-        ensure   => 'present',
+        ensure   => $package_ensure,
         provider => $package_provider,
         source   => $package_source;
     }

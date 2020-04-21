@@ -39,3 +39,7 @@ Minor documentation update.
 ## Release 0.2.4
 
 * Fix config.xml file definition when not managing service
+
+## Release 0.2.5
+
+* Allow specifying version of package
