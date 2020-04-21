@@ -65,7 +65,7 @@ class fahclient (
   Integer $gpu_slots                         = 0,
   Integer $cpu_slots                         = 1,
   Integer $cpus_per_slot                     = $facts['processorcount'] / $cpu_slots,
-  Optional[String] $package_source_path      = $fahclient::params::package_source,
+  Optional[String] $package_source_path      = $fahclient::params::package_source_path,
   Optional[Integer] $uid                     = undef,
   Optional[Integer] $gid                     = undef,
   Boolean $manage_service                    = true,
