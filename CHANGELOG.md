@@ -43,3 +43,7 @@ Minor documentation update.
 ## Release 0.2.5
 
 * Allow specifying version of package
+
+## Release 0.2.6
+
+* Fix to allow underscore in cause parameter
